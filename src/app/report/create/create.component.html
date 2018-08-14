@@ -1,0 +1,147 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card p-4">
+          <div class="row">
+            <div class="col-sm-12">
+              <h5 class="pull-left">Crear Reporte</h5>
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="card card-user">
+          <div id="map" class="map"></div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="card card-body">
+          <form>
+            <div class="row">
+              <div class="col-md-7">
+                <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text" [(ngModel)]="model.name" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Nombre">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label>Nivel</label>
+                  <select class="form-control" [(ngModel)]="model.level" [ngModelOptions]="{standalone: true}" (ngModelChange)="change2($event)">
+                    <option [ngValue]="1">1</option>
+                    <option [ngValue]="2">2</option>
+                    <option [ngValue]="3">3</option>
+                    <option [ngValue]="4">4</option>
+                    <option [ngValue]="5">5</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Tipo</label>
+
+                  <select class="form-control" [(ngModel)]="model.type" [ngModelOptions]="{standalone: true}" (ngModelChange)="change($event)">
+                    <option [ngValue]="'1'">Tubería y alcantarillado</option>
+                    <option [ngValue]="'2'">Contaminación sonora</option>
+                    <option [ngValue]="'3'">Contaminación ambiental</option>
+                    <option [ngValue]="'4'">Uso de zonas no autorizadas</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Descripcion</label>
+                  <textarea class="form-control" [(ngModel)]="model.description" [ngModelOptions]="{standalone: true}" rows="2"></textarea>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Direccion</label>
+                  <input type="text" disabled [ngModel]="model.address" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Direccion">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-sm-10">
+                    <label>Leyes</label>
+                    <div class="row mt-2">
+                      <div class="col-md-12" *ngFor="let law of laws, let i = index">
+                        <div class="row">
+                          <div class="col-md-10 pt-2">
+                            <div class="form-group">
+                              <select class="form-control" [(ngModel)]="law.id" [ngModelOptions]="{standalone: true}">
+                                <option *ngFor="let l of lawsx" [ngValue]="l.id">{{l.description}}</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <button class="btn btn-danger" (click)="removeLaw(i)">
+                              <i class="now-ui-icons  ui-1_simple-remove"></i>
+                            </button>
+                          </div>
+                        </div>
+                
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <button class="btn btn-success" (click)="addLaw()">
+                      <i class="now-ui-icons  ui-1_simple-add"></i>
+                    </button>
+                
+                  </div>
+                
+                
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <button class="btn btn-primary pull-right" (click)="onSubmit()">Crear Reporte</button>
+              </div>
+              
+            </div>
+            
+            
+            <!-- <div class="row">
+              <div class="col-sm-8">
+                <h5>Patrocinadores</h5>
+                <div class="row mt-2">
+                  <div class="col-md-12" *ngFor="let sponsor of sponsors, let i = index">
+                    <div class="row">
+                      <div class="col-md-8 pt-2">
+                        <div class="form-group">
+                          <input type="text" [(ngModel)]="sponsor.name" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Company">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <button class="btn btn-danger" (click)="removeSponser(i)">
+                          <i class="now-ui-icons  ui-1_simple-remove"></i>
+                        </button>
+                      </div>
+                    </div>
+          
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-1">
+                <button class="btn btn-success" (click)="addSponser()">
+                  <i class="now-ui-icons  ui-1_simple-add"></i>
+                </button>
+          
+              </div>
+          
+          
+            </div> -->
+            
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

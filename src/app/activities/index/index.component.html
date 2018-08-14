@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header ">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="card-title pull-left">Actividades</h4>
+            <button class="btn btn-primary pull-right" [routerLink]="['create']">Crear Actividad</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="card-body">
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12" style="cursor: pointer;" *ngFor="let activity of activities">
+    <div class="card " [routerLink]="[activity.id]">
+      <div class="card-header ">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="card-title pull-left" style="font-weight: bold">{{activity.name}}</h4>
+            <h5 class="card-title pull-right">${{activity.cost}}</h5>
+          </div>
+        </div>
+
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <span class="pull-left">{{activity.address}}</span>
+            <span class="pull-right">{{activity.date}} - {{activity.hour}}</span>
+          </div>
+          <div class="col-md-6">
+            <h5>Descripcion</h5>
+            <blockquote>
+              <p class="blockquote blockquote-primary">
+                {{activity.description}}
+              </p>
+            </blockquote>
+          </div>
+          <div class="col-md-6">
+            <h5>Razon</h5>
+            <blockquote>
+              <p class="blockquote blockquote-primary">
+                {{activity.reason}}
+              </p>
+            </blockquote>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

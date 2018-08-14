@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card p-4">
+          <div class="row">
+            <div class="col-sm-12">
+              <h5 class="pull-left">Crear Ordenamiento</h5>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+
+        <div class="card p-4">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="">Modelo</label>
+                <select class="form-control pull-right" [(ngModel)]="option" (ngModelChange)="change($event)">
+                  <option [ngValue]="'1'">Urbanizacion</option>
+                  <option [ngValue]="'2'">IND</option>
+                  <option [ngValue]="'3'">Agropecuario</option>
+                  <option [ngValue]="'4'">Forestal</option>
+                  <option [ngValue]="'5'">Mineria</option>
+                  <option [ngValue]="'6'">Marino</option>
+                  <option [ngValue]="'7'">Servicios Esp</option>
+                  <option [ngValue]="'8'">Area Protegidas</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-7">
+              <div class="form-group">
+                <label for="">Razon</label>
+                <input type="text" [(ngModel)]="model.reason" [ngModelOptions]="{standalone: true}" class="form-control">
+              </div>
+            </div>
+            <div class="col-sm-2 pt-3">
+              <button class="btn btn-success pull-right" (click)="onSubmit()">Crear</button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-12">
+        <div class="card card-user">
+          <div id="map" class="map"></div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

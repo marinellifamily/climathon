@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="card card-user">
+      <div id="map" class="map"></div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title">{{!editMode ? 'Crear' : 'Editar'}} Actividad {{id}}</h5>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="row">
+            <div class="col-md-5 pr-1">
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" [(ngModel)]="model.name" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Nombre">
+              </div>
+            </div>
+            <div class="col-md-3 px-1">
+              <div class="form-group">
+                <label>Costo</label>
+                <input type="number" [(ngModel)]="model.cost" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="$200">
+              </div>
+            </div>
+            <div class="col-md-4 px-1">
+              <div class="form-group">
+                <label>Fecha</label>
+                <input type="date" [(ngModel)]="model.date" [ngModelOptions]="{standalone: true}" class="form-control">
+              </div>
+            </div>
+            <div class="offset-md-8 col-md-4">
+              <div class="form-group">
+                <label>Hora</label>
+                <input type="text" class="form-control" [(ngModel)]="model.hour" [ngModelOptions]="{standalone: true}" placeholder="00:00">
+              </div>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Direccion</label>
+                <input type="text" class="form-control" [value]="model.address" disabled placeholder="direccion">
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Descripcion</label>
+                <textarea rows="4" class="form-control" [(ngModel)]="model.description" [ngModelOptions]="{standalone: true}" placeholder="Descripcion"></textarea>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Motivo</label>
+                <textarea rows="4" class="form-control" [(ngModel)]="model.reason" [ngModelOptions]="{standalone: true}" placeholder="Motivo"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-8">
+              <h5>Patrocinadores</h5>
+              <div class="row mt-2">
+                <div class="col-md-12" *ngFor="let sponsor of sponsors, let i = index">
+                  <div class="row">
+                    <div class="col-md-8 pt-2">
+                      <div class="form-group">
+                        <input type="text" [(ngModel)]="sponsor.name" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Company">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <button class="btn btn-danger" (click)="removeSponser(i)">
+                        <i class="now-ui-icons  ui-1_simple-remove"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-1">
+              <button class="btn btn-success" (click)="addSponser()">
+                <i class="now-ui-icons  ui-1_simple-add"></i>
+              </button>
+
+            </div>
+
+
+          </div>
+          <div class="row">
+            <div class="col-md-12 pr-1">
+              <button *ngIf="!editMode" class="btn btn-success pull-right" (click)="onSubmit()">
+                 {{editMode ? 'Crear' : 'Guardar'}} Actividad
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

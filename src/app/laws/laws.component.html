@@ -1,0 +1,66 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">{{editMode ? 'Editar' : 'Crear'}} Ley {{editMode ? id : ''}}</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="">Descripcion</label>
+            <textarea name="" [(ngModel)]="law" class="form-control" rows="4" placeholder="Descripcion de la ley"></textarea>
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="onSubmit()">{{editMode ? 'Guardar' : 'Crear'}} Ley</button>
+          <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+        </div>
+      </ng-template>
+    </div>
+    <div class="col-md-12">
+      <div class="card  card-tasks">
+        <div class="card-header mb-2">
+          <div class="row">
+            <div class="col-md-12">
+              <h4 class="card-title pull-left">Leyes</h4>
+              <button class="btn btn-primary pull-right" (click)="openLg(content)">Crear Ley</button>
+            </div>
+          </div>
+
+        </div>
+        <div class="card-body mt-3">
+          <div class="table-full-width table-responsive">
+            <table class="table">
+              <tbody>
+                <tr *ngFor="let law of laws; let i = index">
+                  <td class="text-left">{{law.description}}</td>
+                  <td class="td-actions text-right">
+                    <button type="button" rel="tooltip" title="" (click)="edit(i, law, content)" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                      <i class="now-ui-icons ui-2_settings-90"></i>
+                    </button>
+                    <button type="button" rel="tooltip" title="" (click)="delete(i)" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                      <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <!-- <div class="stats">
+            <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,107 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header ">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="card-title pull-left">Propuestas</h4>
+            <button class="btn btn-primary pull-right" [routerLink]="['create']">Crear Propuesta</button>
+          </div>
+          <div class="col-md-12">
+            <div class="row">
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12" *ngFor="let proposal of proposals">
+    <div class="card ">
+      <div class="card-header ">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="card-title pull-left" style="cursor: pointer;" style="font-weight: bold" 
+            [routerLink]="[proposal.id]">{{proposal.name}}</h4>
+            <div class="pull-right">
+              <button class="btn btn-info">
+                <i class="now-ui-icons ui-2_like"></i>
+                <br>
+                <span>{{proposal.likes}}</span>
+              </button>
+
+              <button class="btn btn-danger" *ngIf="proposal.important == 2">
+                <i class="now-ui-icons ui-1_simple-remove"></i>
+                <br>
+                <span>{{proposal.dislikes}}</span>
+              </button>
+              <h5>%{{porciento(proposal.likes)}}</h5>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <span class="pull-left">{{proposal.address}}</span>
+            <!-- <span class="pull-right">{{activity.date}} - {{activity.hour}}</span> -->
+          </div>
+          <div class="col-md-6">
+            <h5>Descripcion</h5>
+            <blockquote>
+              <p class="blockquote blockquote-primary">
+                {{proposal.description}}
+              </p>
+            </blockquote>
+          </div>
+          <div class="col-md-6">
+            <h5>Razon</h5>
+            <blockquote>
+              <p class="blockquote blockquote-primary">
+                {{proposal.reason}}
+              </p>
+            </blockquote>
+          </div>
+          <div class="col-md-12">
+            <h6>Soluciones</h6>
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Nombre
+                  </th>
+                  <th>
+                    Descripcion
+                  </th>
+                  <th>
+                    Costo
+                  </th>
+                  
+                </thead>
+                <tbody>
+                  <tr *ngFor="let solution of proposal.solutions">
+                    <td>
+                      {{solution.name}}
+                    </td>
+                    <td>
+                      {{solution.description}}
+                    </td>
+                    
+                    <td class="">
+                      ${{total(solution.costs)}}
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

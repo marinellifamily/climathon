@@ -1,0 +1,150 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card p-4">
+          <div class="row">
+            <div class="col-sm-12">
+              <h5 class="pull-left">Crear Propuesta</h5>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="card card-user">
+          <div id="map" class="map" style="height: 200px;"></div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-primary pull-right" (click)="addSolution()">Agregar Solucion</button>
+          </div>
+        </div>
+        <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+          <ngb-panel *ngFor="let solution of solutions; let i = index" [title]="'Solucion ' + (i+1)">
+            <ng-template ngbPanelContent>
+              <form>
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <label>Nombre</label>
+                      <input type="text" [(ngModel)]="solution.name" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Nombre">
+                    </div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="form-group">
+                      <label>Descripcion</label>
+                      <input type="text" [(ngModel)]="solution.description" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Nombre">
+                    </div>
+                  </div>
+                  <div class="col-md-12 mt-3">
+                    <h6 class="pull-left mt-3">Presupuesto</h6>
+                    <button class="btn btn-success pull-right" (click)="addCost(i)">
+                      <i class="now-ui-icons  ui-1_simple-add"></i>
+                    </button>
+
+                  </div>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-12" *ngFor="let cost of solution.costs, let x = index">
+                        <div class="row">
+                          <div class="col-md-10">
+                            <div class="row">
+                              <div class="col-md-5">
+                                <label>Cantidad</label>
+                                <input type="number" [(ngModel)]="cost.amount" (ngModelChange)="changeTotal(i)" [ngModelOptions]="{standalone: true}" class="form-control"
+                                  placeholder="">
+                              </div>
+                              <div class="col-md-7">
+                                <label>Title</label>
+                                <input type="text" [(ngModel)]="cost.name" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="">
+                              </div>
+
+                              <div class="col-md-5">
+                                <label>Precio</label>
+                                <input type="number" [(ngModel)]="cost.price" (ngModelChange)="changeTotal(i)" [ngModelOptions]="{standalone: true}" class="form-control"
+                                  placeholder="">
+                              </div>
+                              <div class="col-md-7">
+                                <label>Descripcion</label>
+                                <input type="text" [(ngModel)]="cost.description" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-2">
+                            <button class="btn btn-danger mt-3" (click)="removeCost(i, x)">
+                              <i class="now-ui-icons  ui-1_simple-remove"></i>
+                            </button>
+
+                          </div>
+
+
+
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <hr>
+                        <h6 class="pull-right">${{solution.total}}</h6>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <button class="btn btn-danger pull-right" (click)="removerSolution(i)">Remover</button>
+                  </div>
+                </div>
+
+              </form>
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+      </div>
+      <div class="col-sm-4">
+        <div class="card card-body">
+          <form>
+            <div class="row">
+              <div class="col-md-12">
+                <h6>Propuesta</h6>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text" [(ngModel)]="model.name" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Nombre">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Address</label>
+                  <input type="text" disabled [ngModel]="model.address" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Direccion">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Descripcion</label>
+                  <textarea rows="4" class="form-control" [(ngModel)]="model.description" [ngModelOptions]="{standalone: true}" placeholder="Descripcion"></textarea>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Motivo</label>
+                  <textarea rows="4" class="form-control" [(ngModel)]="model.reason" [ngModelOptions]="{standalone: true}" placeholder="Motivo"></textarea>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <button class="btn btn-success pull-right mt-4 mb-4" (click)="onSubmit()">Crear Propuesta</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+</div>
